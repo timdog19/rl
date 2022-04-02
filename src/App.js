@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Stats from './components/Stats';
-import Roadmap from './components/Roadmap';
+import Roadmap from './components/roadmapsection';
 import Library from './components/Library';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
@@ -45,7 +45,7 @@ function App() {
         <Hero />
         <About id="About" style={{"position": "relative"}} />
         <Stats id="Stats" style={{"position": "relative"}} />
-        <Roadmap id="Roadmap" style={{"position": "relative"}} />
+        <Roadmap id="roadmapsection" style={{"position": "relative"}} />
         <Library id="Library" style={{"position": "relative"}} />
         <Faq id="FAQ" style={{"position": "relative"}} />
         <Footer />
