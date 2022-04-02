@@ -45,7 +45,7 @@ export const Footer = (props) => {
                       SneakPunks
                     </Typography>
                     <Typography align="start" className={classes.centertextbreakpoint, classes.pstyle}>
-                      2021 Copyright. All Rights Reserved.
+                      2022 Copyright. All Rights Reserved.
                     </Typography>
                   </Stack>
                 </Grid>
