@@ -1,7 +1,14 @@
-import React, {useRef, useEffect} from 'react'
+import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import '../styles/Roadmap.css'
+import timelineElements from "./data/timelineElement.js";
+
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
+} from "react-vertical-timeline-component";
+
+import "react-vertical-timeline-component/style.min.css";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,75 +54,46 @@ function Roadmap() {
     }, [])
     
 
-    return (
-        <div id="Roadmap" className="roadmap-wrapper" style={{"position": "relative"}}>
-                    <div className="custom-container" style={{"paddingBlock" : "7rem"}} ref={el => {triggerelement = el}}>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} style={{"marginBottom" : "5rem"}}>
-                                <div ref={el => {titleelment = el}}>
-                                    <Typography align="start" variant="h3" gutterBottom>
-                                        Roadmap
-                                    </Typography>
-                                </div>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <section class="timeline" ref={el => {roadmapelement = el}}>
-                                    <div class="timeline-line">
-                                    <span class="timeline-innerline"></span>
-                                    </div>
-                                    <ul class="tmul">
-                                        <li>
-                                            <span class="timeline-point"></span>
-                                            <Typography span component="span" className="title" variant="h6">
-                                                1
-                                            </Typography>
-                                            <Typography paragraph component="p" align="center" gutterBottom variant="subtitle1">
-                                                Launch our NFT collection on Opensea.io
-                                            </Typography>
-                                        </li>
-                                        <li>
-                                            <span class="timeline-point"></span>
-                                            <Typography span component="span" className="title" variant="h6">
-                                                2
-                                            </Typography>
-                                            <Typography paragraph component="p" align="center" gutterBottom variant="subtitle1">
-                                                Get our nft collection listed on rarity.tools.
-                                            </Typography>
-                                        </li>
-                                        <li>
-                                            <span class="timeline-point"></span>
-                                            <Typography span component="span" className="title" variant="h6">
-                                                3
-                                            </Typography>
-                                            <Typography paragraph component="p" align="center" gutterBottom variant="subtitle1">
-                                                Sell everything out and get more club members.
-                                            </Typography>
-                                        </li>
-                                        <li>
-                                            <span class="timeline-point"></span>
-                                            <Typography span component="span" className="title" variant="h6">
-                                                4
-                                            </Typography>
-                                            <Typography paragraph component="p" align="center" gutterBottom variant="subtitle1">
-                                                Finish the game and launch it on steam.
-                                            </Typography>
-                                        </li>
-                                        <li>
-                                            <span class="timeline-point"></span>
-                                            <Typography span component="span" className="title" variant="h6">
-                                                5
-                                            </Typography>
-                                            <Typography paragraph component="p" align="center" gutterBottom variant="subtitle1">
-                                                All the NFT owners get a free access to game.
-                                            </Typography>
-                                        </li>
-                                    </ul>
-                                </section>
-                            </Grid>
-                        </Grid>
+class Roadmap extends React.Component {
+
+    render() {
+        return (
+            <div className="w-full flex flex-col place-items-center" id="roadmap">
+                <div className="w-84.5% pb-36 flex flex-col place-items-center space-y-36">
+                    <div className="w-max">
+                        <h1 className="text-white text-5xl font-extrabold italic">THE ROADMAP</h1>
+                        <div className="w-full h-1.5" style={{
+                            backgroundImage: 'linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgb(162 105 247) 50%, rgba(255, 255, 255, 0) 100%)'
+                        }}></div>
                     </div>
+                    <VerticalTimeline>
+                        {timelineElements.map((element, i) => {
+                        return (
+                            <VerticalTimelineElement
+                                key={i}
+                                date={element.date}
+                                dateClassName="date"
+                                contentStyle={{ 
+                                    background: "rgb(67 41 134)", 
+                                    color: "#fff",
+                                    borderWidth: '2px',
+                                    borderRadius: '20px',
+                                    borderColor: 'white',
+                                    WebkitBoxShadow: 'none'
+                                }}
+                            >
+                                <h3 className="vertical-timeline-element-title text-3xl font-bold">
+                                    {element.title}
+                                </h3>
+                                <p id="description">{element.description}</p>
+                            </VerticalTimelineElement>
+                        );
+                        })}
+                    </VerticalTimeline>
                 </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default Roadmap
